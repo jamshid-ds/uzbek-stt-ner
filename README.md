@@ -11,7 +11,7 @@ Ushbu loyiha O'zbek tili uchun STT va shundan keyin matnni tahlil qilib, NER vaz
 
 **Yakuniy Natija**
 
-- **STT**: WER ~30
+- **STT**: WER ~32
 - **NER**: Precision ~0.97
 
 **Model in Huggingface**
