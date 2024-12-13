@@ -1,4 +1,5 @@
 torch>=1.13.0
+tensorflow>=2.18.0
 transformers>=4.28.0
 datasets>=2.4.0
 jiwer>=2.3.0
@@ -8,3 +9,9 @@ scikit-learn>=1.2.2
 numpy>=1.24.0
 pandas>=1.5.3
 tqdm>=4.65.0
+huggingface_hub
+dataclasses>=0.8
+typing>=3.10.0.0
+evaluate>=0.4.3
+matplotlib>=3.9.4
+collection>=0.1.6
