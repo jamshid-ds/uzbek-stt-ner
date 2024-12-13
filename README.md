@@ -1,2 +1,2 @@
 # uzbek-stt-ner
-Fine-tuned model for Speech-to-Text (STT) and Named Entity Recognition (NER) in Uzbek. Built using Common Voice and Uzbek NER datasets
+Fine-tuned Whisper-base for STT (WER~30) and Roberta for NER (Precision ~ 0.97) in Uzbek. Built using Common Voice and Uzbek NER datasets
