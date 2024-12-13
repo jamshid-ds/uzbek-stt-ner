@@ -1,5 +1,9 @@
 # Speech-to-Text (STT) and Named Entity Recognition (NER) Pipeline for Uzbek Language
 
+ - [https://huggingface.co/jamshidahmadov/whisper-uz-v2](https://huggingface.co/jamshidahmadov/whisper-uz-v2)
+ - [https://huggingface.co/jamshidahmadov/roberta-ner-uz](https://huggingface.co/jamshidahmadov/roberta-ner-uz)
+ - [https://huggingface.co/jamshidahmadov/uz_tokenizer](https://huggingface.co/jamshidahmadov/uz_tokenizer)
+   
 ## **Project Overview**
 Ushbu loyiha O'zbek tili uchun STT va shundan keyin matnni tahlil qilib, NER vazifasini bajaradi. Loyihada fine-tuning jarayonlari amalga oshirildi va pipeline tuzildi.
 
