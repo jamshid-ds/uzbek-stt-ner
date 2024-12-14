@@ -170,6 +170,40 @@ tokenizer = AutoTokenizer.from_pretrained("jamshidahmadov/uz_tokenizer")
 tokenizer.tokenizer("TEXT")
 ```
 
+### Pipeline
+
+```python
+class Pipeline:
+    def __init__(self, audio_path=audio_path, stt_model_name=stt_model_name, ner_model_name=ner_model_name):
+        self.audio_path = audio_path
+        self.stt_model_name = stt_model_name
+        self.ner_model_name = ner_model_name
+
+    def stt(self):
+        stt_pipeline = pipeline("automatic-speech-recognition", model=self.stt_model_name)
+        stt_results = stt_pipeline(self.audio_path)
+        return stt_results['text']
+
+    def ner(self):
+        text = self.stt()
+        ner_pipeline = pipeline("ner", model=self.ner_model_name, tokenizer=self.ner_model_name)
+        ner_results = ner_pipeline(text)
+        main_result = ""
+        for item in ner_results:
+            main_result += f"{item['word']} - {item['entity']}\n"
+        return main_result
+
+    def stt_ner(self):
+        text = self.stt()
+        ner_results = self.ner()
+        main_result = f"{text}\n\n{ner_results}"
+        return main_result
+
+result_stt = Pipeline().stt()
+result_ner = Pipeline().ner()
+result_stt_ner = Pipeline().stt_ner()
+```
+
 ---
 
 ## **About the Author**
