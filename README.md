@@ -1,6 +1,6 @@
 # Speech-to-Text (STT) and Named Entity Recognition (NER) Pipeline for Uzbek Language
 
- - STT : [https://huggingface.co/jamshidahmadov/whisper-uz-v2](https://huggingface.co/jamshidahmadov/whisper-uz-v2)
+ - STT : [https://huggingface.co/jamshidahmadov/whisper-uz](https://huggingface.co/jamshidahmadov/whisper-uz)
  - NER : [https://huggingface.co/jamshidahmadov/roberta-ner-uz](https://huggingface.co/jamshidahmadov/roberta-ner-uz)
  - Tokenizer for Uzbek Language : [https://huggingface.co/jamshidahmadov/uz_tokenizer](https://huggingface.co/jamshidahmadov/uz_tokenizer)
 
@@ -11,15 +11,16 @@ Ushbu loyiha O'zbek tili uchun STT va shundan keyin matnni tahlil qilib, NER vaz
 
 **Yakuniy Natija**
 
-- **STT**: WER ~32
+- **STT**: WER ~10
 - **NER**: Precision ~0.97
 
 **Model in Huggingface**
 
-- **STT Model**: ![STT Screenshot](https://github.com/user-attachments/assets/6905c1dd-1e64-4e94-849f-af82f9efd66f)
+- **STT Model**: ![STT Screenshot](https://github.com/user-attachments/assets/e5d9aef5-7c7b-4e9e-8b18-ca9aea719c80))
 - **NER Model**: ![NER Screenshot](https://github.com/user-attachments/assets/2b71a3bf-8d09-493c-ba04-5927247fab6e)
 
 ---
+
 
 ## **STT Model Details**
 
@@ -40,7 +41,6 @@ whisper-base -> whisper-uz -> whisper-uz-v2
 
 - Base: [openai/whisper-base](https://huggingface.co/openai/whisper-base)
 - Pre-trained v1: [jamshidahmadov/whisper-uz](https://huggingface.co/jamshidahmadov/whisper-uz)
-- Pre-trained v2: [jamshidahmadov/whisper-uz-v2](https://huggingface.co/jamshidahmadov/whisper-uz-v2)
 
 ### **Notebook**
 Trening uchun [notebook](https://github.com/jamshid-ds/uzbek-stt-ner/tree/main/STT/Training).
