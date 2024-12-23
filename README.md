@@ -3,8 +3,6 @@
  - STT : [https://huggingface.co/jamshidahmadov/whisper-uz](https://huggingface.co/jamshidahmadov/whisper-uz)
  - NER : [https://huggingface.co/jamshidahmadov/roberta-ner-uz](https://huggingface.co/jamshidahmadov/roberta-ner-uz)
  - Tokenizer for Uzbek Language : [https://huggingface.co/jamshidahmadov/uz_tokenizer](https://huggingface.co/jamshidahmadov/uz_tokenizer)
-
-***Readme file qurilgan model o'zbek tilida bo'lgani va bu tilni rivojlantirish maqsadida o'zbekcha yozildi :)**
    
 ## **Project Overview**
 This project performs STT for the Uzbek language and analyzes the resulting text to extract named entities (NER). Fine-tuning processes were conducted, and a complete pipeline was built.
