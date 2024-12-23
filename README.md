@@ -7,7 +7,7 @@
 ***Readme file qurilgan model o'zbek tilida bo'lgani va bu tilni rivojlantirish maqsadida o'zbekcha yozildi :)**
    
 ## **Project Overview**
-Ushbu loyiha O'zbek tili uchun STT va shundan keyin matnni tahlil qilib, NER vazifasini bajaradi. Loyihada fine-tuning jarayonlari amalga oshirildi va pipeline tuzildi.
+This project performs STT for the Uzbek language and analyzes the resulting text to extract named entities (NER). Fine-tuning processes were conducted, and a complete pipeline was built.
 
 **Yakuniy Natija**
 
@@ -25,13 +25,15 @@ Ushbu loyiha O'zbek tili uchun STT va shundan keyin matnni tahlil qilib, NER vaz
 ## **STT Model Details**
 
 ### **Main**
-Resurslarning cheklanganligi tufayli Whisper-base modeli umumiy datasetning kichik qismi uchun trening qilindi. Birinchi modeldan WER ~70 natijasi olindi. Trening jarayonining davomiyligi 2 soat.
+Due to limited resources, the Whisper-base model was fine-tuned on a subset of the dataset. The first model achieved a WER of ~70. Training duration was 2 hours.  
 
-Model keyingi kichik dataset uchun qayta trening qilinib, WER ~32 natijasi olindi. Trening jarayoni 2 soat 40 minut davom etdi.
+The model was re-trained on a smaller dataset, reducing the WER to ~32. Training took 2 hours and 40 minutes.
 
-**Muammo**: Cheklangan resurslar (disk, GPU).
+The result wer=10 was obtained for the last update.
 
-**Yechim**: Kaggle kabi bepul resurslardan foydalanib, treningni ikki bosqichda o'tkazdim:
+**Issue**: Limited resources (disk, GPU).  
+
+**Solution**: Training was conducted in two stages using free resources like Kaggle:
 
 ```
 whisper-base -> whisper-uz -> whisper-uz-v2
@@ -40,16 +42,14 @@ whisper-base -> whisper-uz -> whisper-uz-v2
 ### **Models:**
 
 - Base: [openai/whisper-base](https://huggingface.co/openai/whisper-base)
-- Pre-trained v1: [jamshidahmadov/whisper-uz](https://huggingface.co/jamshidahmadov/whisper-uz)
+- Pre-trained: [jamshidahmadov/whisper-uz](https://huggingface.co/jamshidahmadov/whisper-uz)
 
 ### **Notebook**
-Trening uchun [notebook](https://github.com/jamshid-ds/uzbek-stt-ner/tree/main/STT/Training).
+For Training [notebook](https://github.com/jamshid-ds/uzbek-stt-ner/tree/main/STT/Training).
 
 ### **Dataset**
 
-- Asosiy dataset: [mozilla-foundation/common_voice_17_0](https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0)
-- Whisper-uz-v1 uchun: 10,000 audio
-- Whisper-uz-v2 uchun: 21,000 audio
+- Main Dataset: [mozilla-foundation/common_voice_17_0](https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0)
 
 ### **Basic Hyperparameters**
 
@@ -58,38 +58,38 @@ Trening uchun [notebook](https://github.com/jamshid-ds/uzbek-stt-ner/tree/main/S
 - Training Steps: `3000`
 
 ### **Test with Real Audios**
-Tayyor bo'lgan STT modelini o'zim yozgan ovozlar bilan sinab ko'rdim. Natija qoniqarli.
+The STT model was tested with my own recorded audio samples. Results were satisfactory.
 
 ![Test Audio Screenshot](https://github.com/user-attachments/assets/4267f887-e345-4bff-af6c-8dfc5158c477)
 
-Test audiolarni yuklash uchun [link](https://github.com/jamshid-ds/uzbek-stt-ner/tree/main/Comparison-STT-NER/Test-Audios).
+Test audios can be downloaded [link](https://github.com/jamshid-ds/uzbek-stt-ner/tree/main/Comparison-STT-NER/Test-Audios).
 
 ---
 
 ## **NER Model Details**
 
 ### **Main**
-NER modelini trening qilish uchun bepul resurslardan foydalandim. Resurslarning cheklanganligi sabab `xlm-roberta-base` modelidan foydalanildi. Model sifatini oshirish uchun O'zbek tili uchun tokenizer yaratdim. Dataset hajmi: 130,000 gap (Common Voice 17.0 train + validated).
+The NER model was trained using free resources. Due to limited resources, the `xlm-roberta-base` model was chosen. To improve performance, a custom tokenizer for the Uzbek language was created. The dataset size was 130,000 sentences (Common Voice 17.0 train + validated).
 
 - **Tokenizer**: [jamshidahmadov/uz_tokenizer](https://huggingface.co/jamshidahmadov/uz_tokenizer)
 - **Tokenizer Notebook**: [link](https://github.com/jamshid-ds/uzbek-stt-ner/blob/main/Tokenizer/Tokenizer.ipynb)
 
-**Muammo**: Datasetning kichikligi.
+**Muammo**: Small dataset size.
 
-**Yechim**: Optimal modelni tanlab, kamroq epochlarda trening o'tkazdim. Aks holda, overfitting yuzaga kelishi mumkin edi.
+**Yechim**: An optimal model was selected, and training was conducted with fewer epochs to prevent overfitting.
 
 ### **Models:**
 
 - Base: [FacebookAI/xlm-roberta-base](https://huggingface.co/FacebookAI/xlm-roberta-base)
-- Pre-trained v1: [jamshidahmadov/roberta-ner-uz](https://huggingface.co/jamshidahmadov/roberta-ner-uz)
+- Pre-trained: [jamshidahmadov/roberta-ner-uz](https://huggingface.co/jamshidahmadov/roberta-ner-uz)
 
 ### **Notebook**
-Trening uchun [notebook](https://github.com/jamshid-ds/uzbek-stt-ner/blob/main/NER/Training/roberta-base-ner-uz.ipynb).
+For Training [notebook](https://github.com/jamshid-ds/uzbek-stt-ner/blob/main/NER/Training/roberta-base-ner-uz.ipynb).
 
 ### **Dataset**
 
-- Asosiy dataset: [risqaliyevds/uzbek_ner](https://huggingface.co/datasets/risqaliyevds/uzbek_ner)
-- Dataset hajmi: 19,000 qator (JSON format).
+- Main dataset: [risqaliyevds/uzbek_ner](https://huggingface.co/datasets/risqaliyevds/uzbek_ner)
+- Dataset size: 19,000 qator (JSON format).
 
 ### **Entities:**
 
@@ -109,7 +109,7 @@ Trening uchun [notebook](https://github.com/jamshid-ds/uzbek-stt-ner/blob/main/N
 - Epoch: `1`
 
 ### **Test with Real Texts**
-Natijalar qoniqarli darajada. Quyida base model va fine-tuned model natijalari keltirilgan:
+Results were satisfactory. Below are the results for the base model and the fine-tuned model:
 
 Test matn: Toshkent shahrida yangi o'zgarishlar bo'lmoqda.
 
@@ -120,8 +120,8 @@ Test matn: Toshkent shahrida yangi o'zgarishlar bo'lmoqda.
 
 ## **Pipeline Structure**
 
-1. **Speech-to-Text Conversion**: STT modeli O'zbek tilidagi ovozni matnga aylantiradi.
-2. **Named Entity Extraction from Text**: Fine-tuned NER modeli matndan nomlangan obyektlarni ajratadi va tasniflaydi.
+1. **Speech-to-Text Conversion**: Converts Uzbek audio into text using the STT model.  
+2. **Named Entity Extraction from Text**: Extracts and classifies named entities using the fine-tuned NER model.  
 
 ---
 
