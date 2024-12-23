@@ -7,7 +7,7 @@
 ## **Project Overview**
 This project performs STT for the Uzbek language and analyzes the resulting text to extract named entities (NER). Fine-tuning processes were conducted, and a complete pipeline was built.
 
-**Yakuniy Natija**
+**Final Result**
 
 - **STT**: WER ~10
 - **NER**: Precision ~0.97
